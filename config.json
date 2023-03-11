@@ -1,0 +1,6 @@
+{
+    "port": "9999",
+    "data_path": "./mockData",
+    "public_path": "/Users/pangqianjin/Public/fqfin/server-public/resource/statics",
+    "debug_level": "info"
+}
