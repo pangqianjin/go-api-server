@@ -1,23 +1,34 @@
 # go-apiServer
 
 #### 介绍
-GO语言编写的静态资源服务器，也可用于mock JSON请求
+GO语言编写的静态资源服务器，也可用于mock JSON请求，自用
 
 #### 软件架构
-软件架构说明
+使用全宇宙最快的go框架Iris编写
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  $```go get github.com/kataras/iris/v12@master # or @v12.2.0-beta7```
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. config.json请参考默认的配置
+```json
+{
+    "port": "9999",
+    "data_path": "./mockData",
+    "public_path": "/Users/pangqianjin/Public/fqfin/server-public/resource/statics",
+    "debug_level": "info"
+}
+```
+2. 默认使用9999端口，如冲突请修改为其他即可
+3. 默认配置./mockData为JSON文件夹
+    - 拷贝你的JSON文件夹到mockData下，如 /mockData/api/*.json
+    - \*.json可用于GET,PUT,DELETE请求，*.post.json用于POST请求
+4. 静态资源目录请配置public_path字段
+5. 日志等级请配置debug_level字段，默认为info
+6. 本人上传的./go-apiServer为macos m1可用，其他操作系统请自行编译
 
 #### 参与贡献
 
@@ -25,13 +36,3 @@ GO语言编写的静态资源服务器，也可用于mock JSON请求
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
