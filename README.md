@@ -13,7 +13,7 @@ GO语言编写的静态资源服务器，也可用于mock JSON请求，自用
 
 #### 使用说明
 
-1. config.json请参考默认的配置
+1. property-config.json请参考默认的配置
 ```json
 {
     "port": "9999",
@@ -23,11 +23,12 @@ GO语言编写的静态资源服务器，也可用于mock JSON请求，自用
 }
 ```
 2. 默认使用9999端口，如冲突请修改为其他即可
-3. 默认配置./mockData为JSON文件夹
+3. 默认配置./mockData为JSON文件夹, 最多支持三层嵌套/xx/xx/xx[.post].json
     - 拷贝你的JSON文件夹到mockData下，如 /mockData/api/*.json
     - \*.json可用于GET,PUT,DELETE请求，*.post.json用于POST请求
 4. 静态资源目录请配置public_path字段
 5. 日志等级请配置debug_level字段，默认为info
+6. 日志自定义请配置logger-config.json
 6. 本人上传的./go-apiServer为macos m1可用，其他操作系统请自行编译
 
 #### 参与贡献

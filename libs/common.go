@@ -8,8 +8,6 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
-
-	"gitee.com/go-apiServer/model"
 )
 
 // get the dirrectory path of programName
@@ -20,8 +18,8 @@ func getExecPath() (path string) {
 	return
 }
 
-// bind json to jsonObj
-func ReadProperty(fileName string, property *model.Property) (err error) {
+// read file and bind to JSON
+func ReadFileToModel(fileName string, model interface{}) (err error) {
 	path := fmt.Sprintf("%s/%s", getExecPath(), fileName) // concat the config file path
 	file, err := os.Open(path)
 	if err != nil {
@@ -33,7 +31,7 @@ func ReadProperty(fileName string, property *model.Property) (err error) {
 		err = fmt.Errorf("读取文件：%s错误：%+v", path, err)
 	}
 
-	err = json.Unmarshal(contentByte, &property)
+	err = json.Unmarshal(contentByte, &model)
 	if err != nil {
 		err = fmt.Errorf("文件：%s 的json unmarshal失败: %+v", fileName, err)
 	}
@@ -42,10 +40,8 @@ func ReadProperty(fileName string, property *model.Property) (err error) {
 
 // read xxx.json or xxx.post.json
 func ReadJSON(fileName string) (result string, err error) {
-	path := fmt.Sprintf("%s/%s", getExecPath(), fileName) // concat the config file path
-	postJSONReg := regexp.MustCompile(`.post`)
-	path = postJSONReg.ReplaceAllString(path, "") // replace .post to "" in path
-
+	// path := fmt.Sprintf("%s/%s", getExecPath(), fileName) // concat the config file path
+	path := fileName
 	file, err := os.Open(path)
 	if err != nil {
 		err = fmt.Errorf("文件：%s不存在，错误：%v+", path, err)

@@ -1,3 +1,4 @@
 package conf
 
-const PropertyFileName = "config.json"
+const PropertyFileName = "property-config.json"
+const LoggerConfigFileName = "logger-config.json"

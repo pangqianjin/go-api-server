@@ -2,8 +2,11 @@ package service
 
 import (
 	"fmt"
+	"regexp"
 
+	"gitee.com/go-apiServer/conf"
 	"gitee.com/go-apiServer/libs"
+	"gitee.com/go-apiServer/logger"
 	"gitee.com/go-apiServer/model"
 	"github.com/kataras/iris/v12"
 )
@@ -12,7 +15,11 @@ type service struct {
 	Property model.Property
 }
 
-func NewService(property model.Property) *service {
+func NewService() *service {
+	property := model.Property{}
+	libs.ReadFileToModel(conf.PropertyFileName, &property)
+
+	fmt.Printf("%#v\n", property)
 	return &service{
 		Property: property,
 	}
@@ -21,12 +28,20 @@ func NewService(property model.Property) *service {
 func (s *service) handler(ctx iris.Context) {
 	url := ctx.Request().URL
 	fmt.Println(url)
-	contentByte, err := libs.ReadJSON(fmt.Sprintf("%s/%s", s.Property.DataPath, url.Path))
+	method := ctx.Method()
+	path := fmt.Sprintf("%s/%s", s.Property.DataPath, url.Path)
+	if method == "POST" {
+		jsonReg := regexp.MustCompile(`.json`)
+		path = jsonReg.ReplaceAllString(path, ".post.json") // replace .json to .post.json
+	}
+
+	contentByte, err := libs.ReadJSON(path)
 	if err != nil {
-		ctx.JSON(contentByte)
+		fmt.Println("err:", err)
+		ctx.NotFound()
 		return
 	}
-	ctx.NotFound()
+	ctx.JSON(contentByte)
 }
 
 func (s *service) newApp() *iris.Application {
@@ -49,18 +64,22 @@ func (s *service) newApp() *iris.Application {
 		DirList: iris.DirListRich(),
 	})
 
-	// handle xx.json
-	app.Get("/{name:string regexp(.*.json$)}", s.handler)
-	app.Put("/{name:string regexp(.*.json$)}", s.handler)
-	app.Delete("/{name:string regexp(.*.json$)}", s.handler)
-	// handle xx.post.json
-	app.Post("/{name:string regexp(.*.post.json$)}", s.handler)
-
 	return app
 }
 
+func (s *service) AddRoutes(app *iris.Application) {
+	app.Any("/{request:string}", s.handler)
+	app.Any("/{group:string}/{request:string}", s.handler)
+	app.Any("/{prefix:string}/{group:string}/{request:string}", s.handler)
+
+	return
+}
+
 func (s *service) Start() {
+	logger := logger.CustomLogger()
 	app := s.newApp()
+	app.Use(logger)
+	s.AddRoutes(app)
 	app.Logger().SetLevel(s.Property.DebugLevel)
 	app.Listen(fmt.Sprintf(":%s", s.Property.Port))
 }
