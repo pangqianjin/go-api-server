@@ -41,7 +41,7 @@ func (s *service) handler(ctx iris.Context) {
 		ctx.NotFound()
 		return
 	}
-	ctx.JSON(contentByte)
+	ctx.Write([]byte(contentByte))
 }
 
 func (s *service) newApp() *iris.Application {

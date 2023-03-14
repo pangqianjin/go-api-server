@@ -53,7 +53,7 @@ func ReadJSON(fileName string) (result string, err error) {
 	}
 
 	str := string(contentBytes)
-	commentReg := regexp.MustCompile(`(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)`)
+	commentReg := regexp.MustCompile(`\/\/.*|\/*.*\*\/`)
 	result = commentReg.ReplaceAllString(str, "") // replace commemts in json file
 
 	return
