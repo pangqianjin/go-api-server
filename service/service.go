@@ -27,7 +27,6 @@ func NewService() *service {
 
 func (s *service) handler(ctx iris.Context) {
 	url := ctx.Request().URL
-	fmt.Println(url)
 	method := ctx.Method()
 	path := fmt.Sprintf("%s/%s", s.Property.DataPath, url.Path)
 	if method == "POST" {
@@ -49,7 +48,7 @@ func (s *service) newApp() *iris.Application {
 
 	// handle statics resources
 	statics := app.Party("/")
-	statics.HandleDir("/statics", iris.Dir(s.Property.PublicPath), iris.DirOptions{
+	statics.HandleDir(s.Property.PublicPrefix, iris.Dir(s.Property.PublicPath), iris.DirOptions{
 		Compress:   false,
 		ShowList:   false,
 		ShowHidden: false,
