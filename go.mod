@@ -2,7 +2,7 @@ module gitee.com/go-apiServer
 
 go 1.19
 
-require github.com/kataras/iris/v12 v12.2.0-beta7.0.20230114014040-ebc9d090ad8f
+require github.com/kataras/iris/v12 v12.2.1-0.20230313123911-767257423203
 
 require (
 	github.com/BurntSushi/toml v1.2.1 // indirect
@@ -12,7 +12,7 @@ require (
 	github.com/Joker/jade v1.1.3 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06 // indirect
 	github.com/ajg/form v1.5.1 // indirect
-	github.com/andybalholm/brotli v1.0.4 // indirect
+	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible // indirect
 	github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385 // indirect
@@ -34,10 +34,10 @@ require (
 	github.com/kataras/pio v0.0.11 // indirect
 	github.com/kataras/sitemap v0.0.6 // indirect
 	github.com/kataras/tunnel v0.0.4 // indirect
-	github.com/klauspost/compress v1.15.14 // indirect
+	github.com/klauspost/compress v1.16.0 // indirect
 	github.com/mailgun/raymond/v2 v2.0.48 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/microcosm-cc/bluemonday v1.0.21 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.23 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
@@ -48,7 +48,7 @@ require (
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/smartystreets/goconvey v1.7.2 // indirect
-	github.com/stretchr/testify v1.8.1 // indirect
+	github.com/stretchr/testify v1.8.2 // indirect
 	github.com/tdewolff/minify/v2 v2.12.4 // indirect
 	github.com/tdewolff/parse/v2 v2.6.4 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
@@ -60,12 +60,12 @@ require (
 	github.com/yosssi/ace v0.0.5 // indirect
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
-	golang.org/x/crypto v0.5.0 // indirect
-	golang.org/x/net v0.5.0 // indirect
-	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/text v0.6.0 // indirect
+	golang.org/x/crypto v0.7.0 // indirect
+	golang.org/x/net v0.8.0 // indirect
+	golang.org/x/sys v0.6.0 // indirect
+	golang.org/x/text v0.8.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
-	google.golang.org/protobuf v1.28.1 // indirect
+	google.golang.org/protobuf v1.29.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
